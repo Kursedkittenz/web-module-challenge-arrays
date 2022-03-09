@@ -46,11 +46,13 @@ Use the copy function below to do the following:
 */
 
 
-function copy(/*your code here*/){
-  /*your code here*/
+function copy(icecream){
+  let newArr = []
+  for(let i =0; i<icecream.length;i++){
+    newArr.push(icecream[i])
+  }
+  return newArr
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Confirm that an array is exactly 31 flavors. Your function should accept:
@@ -63,8 +65,8 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-  /*your code here*/
+function is31Flavors(flavorsTotal){
+  return flavorsTotal.length === 31 ? true: false
  }
 
 
@@ -82,8 +84,9 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-  /*your code here*/
+function addFlavor(flavorList, newTaste){
+  flavorList.unshift(newTaste)
+  return flavorList
  }
 
 
@@ -100,8 +103,9 @@ Use the removeLastFlavor function below to do the following:
 */
 
 
-function removeLastFlavor(/*your code here*/){
- /*your code here*/
+function removeLastFlavor(poof){
+  poof.pop()
+  return poof
 }
 
 
@@ -118,8 +122,8 @@ Use the getFlavorByIndex function below to do the following:
 */
 
 
-function getFlavorByIndex(/*your code here*/){
-  /*your code here*/
+function getFlavorByIndex(findCream,num){
+  return findCream[num]
 }
 
 
@@ -138,9 +142,14 @@ Use the removeFlavorByName function below to do the following:
   HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-  /*your code here*/
+function removeFlavorByName(flavorIndex, name){
+  flavorIndex.splice(flavorIndex.indexOf(name), 1)
+  return flavorIndex
 }
+
+
+console.log(removeFlavorByName([1,2,3,4],4))
+
 
 
 
@@ -163,8 +172,15 @@ Use the filterByWord function below to do the following:
 */
 
 
-function filterByWord(/*your code here*/){
-  /*your code here*/
+function filterByWord(creamList, name){
+  let newDay = [] //asign new array to return
+  for (let i =0;i<creamList.length;i++){ //read through inputted array for string
+    let flavorSplit = creamList[i].split(' ')//split text into new array without spaces
+    if (flavorSplit.includes(name)){
+      newDay.push(creamList[i]) //push into new array
+    }
+  }
+  return newDay
 }
 
 
@@ -181,10 +197,13 @@ Use the getAverageWordLength function below to do the following:
   For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-  /*code here*/
+function getAverageWordLength(input){
+  let wordCount = 0
+  input.map(a => wordCount += a.split(' ').length)
+  return wordCount/input.length
 }
 
+console.log(getAverageWordLength(originalFlavors), 'getAverageWordLength')
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
 Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
@@ -199,9 +218,17 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-  /*code here*/
+function getRandomFlavors(org,cur,sea,reg){
+  let select = [org,cur,sea,reg]
+  let newList = [];
+  while(newList.length < 31){
+    let select1 = (Math.floor(Math.random()*4))
+    newList.push(select[select1][Math.floor(Math.random()*3)])
+  }
+  return newList
 }
+
+console.log(getRandomFlavors([1,2,3],[4,5,6],[7,8,9],[10,11,12]))
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 // const newFlavors = [
